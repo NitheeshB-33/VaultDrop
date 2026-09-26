@@ -2,7 +2,7 @@
 
 
 
-A secure file-sharing application built using Spring Boot, Spring Security, JWT, MySQL, and React.
+A secure file-sharing platform built with Spring Boot, Spring Security, JWT, MySQL, and React.
 
 
 
