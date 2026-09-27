@@ -16,7 +16,7 @@ function Login() {
                         response.data
                     );
             console.log(response);
-                navigate('/')
+            window.location.href = "/";
         }).catch(err => {
 
             if (err.response && err.response.status === 401) {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from 'react-router-dom'
-
+import { jwtDecode } from "jwt-decode";
 
 export default function Home() {
     const navigate=useNavigate()
@@ -11,6 +11,10 @@ export default function Home() {
         localStorage.removeItem("token")
         navigate("/login")
     }
+
+
+    let role = null; // Extract role from JWT
+     if (token) { try { const decoded = jwtDecode(token); role = decoded.role; } catch (error) { console.error("Invalid token:", error); } }
 
 
 
@@ -42,6 +46,8 @@ export default function Home() {
                             ):(
                                 <button className="btn primary" onClick={(e)=>navigate("/login")}>Login</button>
                         )}
+
+                        {/* ADMIN ONLY */} {role === "ADMIN" && ( <> <button className="btn admin-btn" onClick={() => navigate("/dashboard")} > Admin Dashboard </button> <button className="btn admin-btn" onClick={() => navigate("/manage")} > Manage Users </button> </> )}
 
                     </div>
                 </div>
